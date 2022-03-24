@@ -11,6 +11,9 @@ runCommand
 	path: pods
 
 runCommand
+	path: pull
+
+runCommand
 	path: svc
 
 
