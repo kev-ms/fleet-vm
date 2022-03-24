@@ -6,5 +6,5 @@
 # change to this directory
 #cd "$(dirname "${BASH_SOURCE[0]}")" || exit
 
-git -C ~/fleet pull
+git -C ~/fleet-vm pull
 git -C ~/gitops pull
