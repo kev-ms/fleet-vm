@@ -4,10 +4,10 @@ command
 	short: Local cluster commands
 
 runCommand
-	path: reset
+	path: cluster/reset
 
 runCommand
-	path: delete
+	path: cluster/delete
 
 runCommand
-	path: jumpbox
+	path: cluster/jumpbox
