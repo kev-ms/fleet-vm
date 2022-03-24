@@ -8,6 +8,12 @@ then
   echo "$(date +'%Y-%m-%d %H:%M:%S')  AKDC_DEBUG is set to true" >> /home/akdc/status
   echo "$(date +'%Y-%m-%d %H:%M:%S')  flux setup skipped" >> /home/akdc/status
 else
+  if [ -z "$AKDC_BRANCH" ]
+  then
+    # set default branch
+    export AKDC_BRANCH=main
+  fi
+
   if [ -z "$AKDC_CLUSTER" ]
   then
     echo "$(date +'%Y-%m-%d %H:%M:%S')  AKDC_CLUSTER not set" >> /home/akdc/status
@@ -41,6 +47,7 @@ else
 
     flux bootstrap git \
     --url "https://github.com/$AKDC_REPO" \
+    --branch "$AKDC_BRANCH" \
     --password "$(cat /home/akdc/.ssh/akdc.pat)" \
     --token-auth true \
     --path "./deploy/bootstrap/$AKDC_CLUSTER"
@@ -53,7 +60,7 @@ else
 
   flux create source git gitops \
   --url "https://github.com/$AKDC_REPO" \
-  --branch main \
+  --branch "$AKDC_BRANCH" \
   --password "$(cat /home/akdc/.ssh/akdc.pat)" \
 
   flux create kustomization bootstrap \
