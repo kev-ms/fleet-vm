@@ -13,7 +13,7 @@ echo "Creating cluster ..."
 
 ### todo - check az login
 
-cd ~/fleet/setup || exit
+cd ~/fleet-vm/setup || exit
 
 ./akdc-pre-k3d.sh
 ./k3d-setup.sh
