@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $(kubectl get po -n vtlog) == *"tlog"* ]]
+then
+   echo "$(hostname) found"
+else
+   echo "$(hostname) not found"
+fi
