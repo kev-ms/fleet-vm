@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [[ $(kubectl get po -n vtlog) == *"tlog"* ]]
+# verify vtlog and fluent-bit pods are running
+if [ "$(kubectl get pods -n vtlog 2>/dev/null | grep -c -e Running)" = 2 ]
 then
-   echo "$(hostname) found"
+	echo "$(hostname) success"
 else
-   echo "$(hostname) not found"
+	echo "$(hostname) failed"
 fi
